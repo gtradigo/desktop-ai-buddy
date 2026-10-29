@@ -1,0 +1,48 @@
+# Desk Buddy configuration. Restart the buddy after editing.
+
+look:
+  eye_color: "#5BE7FF"       # any CSS-style color, e.g. "#FFB347" for warm amber
+  face_plate: true           # dark rounded face behind the eyes (false = floating eyes)
+  scale: 1.0                 # 1.5 = bigger buddy
+  follow_cursor: true        # eyes glance at your mouse pointer
+  captions: true             # show what you said / what it's saying under the face
+  sleep_after_minutes: 10    # gets sleepy when idle, 0 = never
+
+wake:
+  # Built-in: hey_jarvis, alexa, hey_mycroft, hey_rhasspy
+  # Custom:   a path to your own model, e.g. wakewords/hey_pip.onnx (see README)
+  # Several at once are fine: [hey_jarvis, wakewords/hey_pip.onnx]
+  words: [hey_jarvis]
+  threshold: 0.5             # raise (0.6–0.7) if it wakes up by accident, lower if it ignores you
+  chime: true                # little "boop" when it starts listening
+
+audio:
+  input_device: null         # null = system default; or a name/number from: python -m sounddevice
+  output_device: null
+  speech_level: 300          # raise if it never stops listening, lower if it cuts you off
+  silence_seconds: 0.8       # pause length that ends your sentence
+  max_listen_seconds: 12
+  follow_up_seconds: 4       # keep listening after a reply so you can continue; 0 = always need the wake word
+
+stt:
+  model: base.en             # tiny.en / base.en / small.en (English) — or base / small for other languages
+  language: en               # e.g. it for Italian (then use a multilingual model like "small")
+  device: cpu                # cuda if you have an NVIDIA GPU
+  compute_type: int8         # float16 on GPU
+
+llm:
+  url: http://localhost:11434
+  model: llama3.2:3b         # small models answer fastest; try qwen2.5:7b or gemma3:4b too
+  temperature: 0.7
+  keep_alive: 30m            # keep the model loaded between questions
+  history_turns: 6           # how many exchanges it remembers
+  think: null                # set false to switch off reasoning on "thinking" models (qwen3, deepseek-r1)
+
+tts:
+  voice: voices/en_US-amy-medium.onnx   # Italian: voices/it_IT-paola-medium.onnx
+  speed: 1.0                            # 1.15 = a bit faster
+
+personality: |
+  You are Pip, a small cheerful robot who lives on the user's Linux desktop.
+  You are curious, warm and a little playful. Keep answers short: one to three
+  sentences, unless the user asks for more detail.

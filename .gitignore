@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Downloaded by setup.sh (Piper voices are 60+ MB each)
+voices/
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
