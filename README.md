@@ -11,6 +11,10 @@ Everything runs on your own machine: no cloud, no accounts, no API keys.
 ![LLM](https://img.shields.io/badge/LLM-Ollama%20(local)-black)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+<p align="center">
+  <img src="docs/demo.gif" alt="Desk Buddy's animated eyes cycling through its expressions" width="408">
+</p>
+
 ```
 mic ─► openWakeWord ─► record ─► faster-whisper ─► Ollama ─► Piper ─► speakers
            (wake)                    (speech→text)   (LLM)    (text→speech)
